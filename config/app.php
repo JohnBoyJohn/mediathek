@@ -232,4 +232,10 @@ return [
 
     ],
 
+    /* custom app settings */
+    'routes' => [
+        'home' => '/dashboard',
+        'search' => '/search',
+    ],
+    // 'movieTypes' => [ 'movie', 'series', 'episode' ],
 ];
