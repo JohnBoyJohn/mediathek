@@ -237,5 +237,5 @@ return [
         'home' => '/dashboard',
         'search' => '/search',
     ],
-    // 'movieTypes' => [ 'movie', 'series', 'episode' ],
+    'invalidApiString' => 'N/A',
 ];

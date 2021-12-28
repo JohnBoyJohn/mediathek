@@ -1,8 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\ListController;
 use App\Http\Controllers\SearchController;
+use App\Http\Controllers\MovieController;
 
 /*
 |--------------------------------------------------------------------------
@@ -22,8 +23,19 @@ Route::get('/', function () {
 require __DIR__.'/auth.php';
 
 Route::middleware([ 'auth' ])->group(function () {
-    Route::get('/dashboard', [DashboardController::class, 'show'])->name('dashboard');
+    Route::prefix('/dashboard')->group(function () {
+        Route::get('/', [ListController::class, 'show'])->name('dashboard');
+        Route::post('/{imdbID}', [ListController::class, 'markAsViewed'])->name('dashboard');
+    });
 
-    Route::get('/search', [SearchController::class, 'show'])->name('search');
-    Route::post('/search', [SearchController::class, 'search'])->name('search');
+    Route::prefix('/search')->group(function () {
+        Route::get('/', [SearchController::class, 'show'])->name('search');
+        Route::post('/', [SearchController::class, 'search'])->name('search');
+    });
+
+    Route::prefix('/movie')->group(function () {
+        Route::post('/get', [MovieController::class, 'getUserList']);
+        // Route::post('/get/{id}', [MovieController::class, 'read']); für später = gesamte übersicht über den film mit allen daten
+        Route::post('/store', [MovieController::class, 'create']);
+    });
 });

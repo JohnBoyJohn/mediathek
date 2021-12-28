@@ -2,10 +2,10 @@
     <div class="container w-100 d-inline">
         <div class="row">
             <div class="col-9">
-                {{ $header }}
+                <h1>Movie Tracker</h1>
             </div>
             
-            <div class="col-3 dropdown">
+            <div class="col-3 dropdown pe-0">
                 <button class="btn btn-primary dropdown-toggle float-end" 
                         type="button" 
                         id="customerMenuButton" 

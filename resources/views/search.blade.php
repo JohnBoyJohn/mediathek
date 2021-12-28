@@ -3,20 +3,14 @@
 @endpush
 
 <x-app-layout>
-    <x-slot name="header">
-        <h2 class="">
-            {{ __('search') }}
-        </h2>
-    </x-slot>
-
     <div class="container">
-        <div class="row">
-            <div class="col">
-                <div id="app" class="wrapper">
-                    <app 
-                        routes="{{ json_encode(config('app.routes')) }}"
-                        lang="{{ json_encode(__('app')) }}"
-                    />
+        <div id="app" class="wrapper">
+            <div class="row mt-4">
+                @include('layouts.sidebar')
+
+                <div class="col-9 border bg-light">
+                    <!-- CONTENT -->
+                    <app :lang="{{ json_encode(__('app')) }}" />
                 </div>
             </div>
         </div>

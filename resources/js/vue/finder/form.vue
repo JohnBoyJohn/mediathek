@@ -1,6 +1,6 @@
 <template>
-    <div class="col-9 border bg-light">
-        <h2>{{ lang.search.title }}</h2>
+    <div class="">
+        <h2 class="my-3">{{ lang.search.title }}</h2>
 
         <form method="post" action="/search" @submit="send">
             <input type="hidden" :value="csrfToken" name="_token">
@@ -53,42 +53,6 @@
                 </div>
             </div>
         </form>
-
-        <div class="" v-show="searchResult">
-            <h2>Suchergebnis</h2>
-
-            <template v-for="(value, index) in searchResult">
-                <div v-if="index == 'Poster'" class="row" :key="index">
-                    <img class="" :src="value" :alt="searchResult.title">
-                </div>
-
-                <div    
-                    v-else-if="index == 'Ratings'"
-                    class="row"
-                    v-for="(rating, indexRating) in value"
-                    :key="index + '-' + rating"
-                >
-                    <div class="col-6 h-100">
-                        <template v-if="!indexRating">
-                            {{ index }}:
-                        </template>
-                    </div>
-                    <div class="col-6">
-                        {{ rating.Source }}: {{ rating.Value }}
-                    </div>
-                </div>
-
-                <div v-else class="row" :key="index">    
-                    <div class="col-6">
-                        {{ index }}:
-                    </div>
-
-                    <div class="col-6">
-                        {{ value }}
-                    </div>
-                </div>
-            </template>
-        </div>
     </div>
 </template>
 
@@ -100,7 +64,6 @@ export default {
             title: '',
             year: '',
             type: '',
-            searchResult: null,
         };
     },
     props: ['lang'],
@@ -125,13 +88,10 @@ export default {
                 year: this.year,
                 type: this.type,
             }
-
-            console.log(data);
             
             axios.post('/search', data)
                 .then(response => {
-                    console.log(response.data);
-                    this.searchResult = response.data;
+                    this.$store.commit('setSearchResult', response.data);
                 })
                 .catch(error => {
                     console.log(error);

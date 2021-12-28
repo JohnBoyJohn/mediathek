@@ -1,19 +1,17 @@
 <template>
-    <div class="row mt-4">
-        <sidebar :routes="routes"></sidebar>
-        <list-form></list-form>
+    <div class="container px-2">
+        <h2 class="my-3">{{ lang.list.title }}</h2>
+        <list-form :movies="movies"></list-form>
     </div>
 </template>
 
 <script>
-import Sidebar from './Sidebar.vue';
 import ListForm from './list/form.vue';
 
 export default {
     name: "List-App",
-    props: ['routes'],
+    props: ['lang', 'movies'],
     components: {
-        Sidebar,
         ListForm,
     }
 }
