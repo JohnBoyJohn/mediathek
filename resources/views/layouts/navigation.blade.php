@@ -2,14 +2,14 @@
     <div class="container w-100 d-inline">
         <div class="row">
             <div class="col-9">
-                <h1>Movie Tracker</h1>
+                <h1>{{ __('app.pageTitle') }}</h1>
             </div>
-            
+
             <div class="col-3 dropdown pe-0">
-                <button class="btn btn-primary dropdown-toggle float-end" 
-                        type="button" 
-                        id="customerMenuButton" 
-                        data-bs-toggle="dropdown" 
+                <button class="btn btn-primary dropdown-toggle float-end"
+                        type="button"
+                        id="customerMenuButton"
+                        data-bs-toggle="dropdown"
                         aria-expanded="false"
                 >
                     <i class="bi bi-person-circle"></i>
@@ -22,8 +22,8 @@
                     <form method="POST" action="{{ route('logout') }}">
                         @csrf
 
-                        <a  :href="route('logout')" 
-                            class="dropdown-item" 
+                        <a  :href="route('logout')"
+                            class="dropdown-item"
                             onclick="event.preventDefault(); this.closest('form').submit();"
                         >
                             {{ __('Log Out') }}

@@ -25,7 +25,6 @@ require __DIR__.'/auth.php';
 Route::middleware([ 'auth' ])->group(function () {
     Route::prefix('/dashboard')->group(function () {
         Route::get('/', [ListController::class, 'show'])->name('dashboard');
-        Route::post('/{imdbID}', [ListController::class, 'markAsViewed'])->name('dashboard');
     });
 
     Route::prefix('/search')->group(function () {
@@ -34,8 +33,7 @@ Route::middleware([ 'auth' ])->group(function () {
     });
 
     Route::prefix('/movie')->group(function () {
-        Route::post('/get', [MovieController::class, 'getUserList']);
-        // Route::post('/get/{id}', [MovieController::class, 'read']); für später = gesamte übersicht über den film mit allen daten
+        Route::get('/{id}', [MovieController::class, 'show']);
         Route::post('/store', [MovieController::class, 'create']);
     });
 });

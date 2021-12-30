@@ -8,30 +8,31 @@
             </div>
 
             <div class="col-8">
-                <div class="d-block row">
-                    <div class="d-inline col-6">
-                        <span class="">
+                <div class="header row mb-3">
+                    <div class="col-6">
+                        <span>
                             {{ result.title }}
                         </span>
                     </div>
-                    <div class="d-inline col-2">
+                    <div class="col-2">
                         <span>
                             {{ result.released }}
                         </span>
                     </div>
-                    <div class="d-inline col-2">
+                    <div class="col-2">
                         <span>
                             {{ result.runtime }}
                         </span>
                     </div>
-                    <div class="d-inline col-2">
+                    <div class="col-2">
                         <input type="hidden" :value="csrfToken" name="_token">
-                        <button class="btn btn-primary" @click="save">
+                        <button class="btn btn-primary float-end me-4" @click="save">
                             {{ lang.search.watched }}
                         </button>
+                        <span class="clearfix"></span>
                     </div>
                 </div>
-                <div class="header d-block row">
+                <div class="content d-block row">
                     <div class="col-12">
                         {{ result.plot }}
                     </div>

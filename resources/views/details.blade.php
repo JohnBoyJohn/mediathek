@@ -1,5 +1,5 @@
 @push('scripts')
-    <script src="{{ mix('js/dashboard.js') }}" defer></script>
+    <script src="{{ mix('js/details.js') }}" defer></script>
 @endpush
 
 <x-app-layout>
@@ -11,7 +11,8 @@
                 <div class="col-9 border bg-light">
                     <!-- CONTENT -->
                     <app 
-                        :movies="{{ json_encode($movies) }}"
+                        :movie="{{ json_encode($movie) }}"
+                        :watched="{{ $watched }}"
                         :lang="{{ json_encode(__('app')) }}" 
                     />
                 </div>

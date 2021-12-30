@@ -1,7 +1,9 @@
 <template>
     <div class="container px-2">
-        <h2 class="my-3">{{ lang.list.title }}</h2>
-        <list-form :movies="movies"></list-form>
+        <h2 class="mt-3 mb-4">
+            {{ lang.list.title }}
+        </h2>
+        <list-form :movies="movies" :lang="lang" />
     </div>
 </template>
 

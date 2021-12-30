@@ -236,6 +236,7 @@ return [
     'routes' => [
         'home' => '/dashboard',
         'search' => '/search',
+        'details' => '/movie'
     ],
     'invalidApiString' => 'N/A',
 ];

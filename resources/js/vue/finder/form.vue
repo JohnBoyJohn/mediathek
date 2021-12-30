@@ -88,7 +88,7 @@ export default {
                 year: this.year,
                 type: this.type,
             }
-            
+
             axios.post('/search', data)
                 .then(response => {
                     this.$store.commit('setSearchResult', response.data);

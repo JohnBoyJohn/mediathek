@@ -5,6 +5,8 @@ return [
     /**************************************************************************
     *                       CUSTOM LANGUAGE LINES                             *
     **************************************************************************/
+    'pageTitle' => 'Movie Tracker',
+    'footerTitle' => 'Footer',
     'Dashboard' => 'Dashboard',
     'requiredField' => '* = Pflichtfeld',
     'year' => 'Jahr',
@@ -27,6 +29,20 @@ return [
     // List Page
     'list' => [
         'title' => 'Liste der gesehenen Filme',
+        'table' => [
+            'header' => [
+                'title' => 'Title',
+                'genre' => 'Genre',
+                'released' => 'Released',
+                'runtime' => 'Runtime',
+                'extra' => 'Extra',
+            ],
+        ],
+    ],
+
+    // Details Page
+    'details' => [
+        'title' => 'Movie Details',
     ],
     
     // AJAX Messages

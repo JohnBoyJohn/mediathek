@@ -12,6 +12,20 @@ use DateTime;
 
 class MovieController extends Controller
 {
+    public function show (Request $request, string $id) {
+        try {
+            $movie = Movie::find($id);
+            $userCount = count($movie->users()->get());
+
+            return view('details')->with([
+                'movie' => $movie,
+                'watched' => $userCount,
+            ]);
+        } catch (\Throwable $th) {
+            $this->log($th, $request);
+        }
+    }
+
     public function create(Request $request)
     {
         $this->validatePostData($request);
@@ -111,6 +125,5 @@ class MovieController extends Controller
         Log::error($request->all());
         Log::error($th);
         Log::error('****************** error-end ******************');
-
     }
 }

@@ -1,20 +1,17 @@
 <template>
-    <div class="movie-list mb-3">
+    <div class="movie-list my-3">
         <div class="header row mb-2">
             <div class="col-4">
-                title
+                {{ lang.list.table.header.title }}
             </div>
-            <div class="col-3">
-                genre
-            </div>
-            <div class="col-2">
-                released
-            </div>
-            <div class="col-1">
-                runtime
+            <div class="col-4">
+                {{ lang.list.table.header.genre }}
             </div>
             <div class="col-2">
-                buttons
+                {{ lang.list.table.header.released }}
+            </div>
+            <div class="col-2">
+                {{ lang.list.table.header.runtime }}
             </div>
         </div>
         <div 
@@ -35,7 +32,7 @@ export default {
     components: {
         Movie,
     },
-    props: ['movies'],
+    props: ['movies', 'lang'],
 }
 </script>
 
@@ -43,5 +40,17 @@ export default {
 .header > div {
     font-weight: bold;
     font-size: 1.15rem;
+}
+
+.header,
+.movie-wrapper {
+    padding: 0 10px;
+}
+
+.movie-list > .movie-wrapper {
+    background: #eee;
+}
+.movie-list > .movie-wrapper:nth-child(odd) {
+    background: #ddd;
 }
 </style>

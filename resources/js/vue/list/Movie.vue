@@ -1,19 +1,16 @@
 <template>
-    <div class="movie row">
+    <div class="movie row py-2" @click="showDetails">
         <div class="col-4">
             {{ movie.title }}
         </div>
-        <div class="col-3">
+        <div class="col-4">
             {{ movie.genre }}
         </div>
         <div class="col-2">
             {{ releaseDate }}
         </div>
-        <div class="col-1">
-            {{ movie.runtime }}
-        </div>
         <div class="col-2">
-            buttons
+            {{ movie.runtime }}
         </div>
     </div>
 </template>
@@ -31,13 +28,21 @@ export default {
                 let day = rDate.getDay();
                 return `${day}.${month}.${year}`;
             }
+            
             return this.movie.released;
         }
     },
     methods: {
-        markAsWatched () {
-
+        showDetails () {
+            console.log('show details from movie.id ' + this.movie.id);
+            window.location.href = '/movie/' + this.movie.id;
         }
-    }
+    },
 }
 </script>
+
+<style scoped>
+.movie {
+    cursor: pointer;
+}
+</style>
