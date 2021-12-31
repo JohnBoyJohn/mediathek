@@ -4,7 +4,7 @@
             {{ lang.details.title }}
 
             <span class="float-end">
-                <i class="fs-4 bi-house"></i>
+                <i class="fs-4 bi-eye"></i>
                 {{ watched }}
             </span>
             <span class="clear-both"></span>

@@ -19,7 +19,11 @@
             v-for="movie in movies"
             :key="movie.imdbId"
         >
-            <movie :movie="movie"></movie>
+            <movie
+                :lang="lang"
+                :movie="movie"
+                :invalid-api-string="invalidApiString"
+            />
         </div>
     </div>
 </template>
@@ -32,7 +36,7 @@ export default {
     components: {
         Movie,
     },
-    props: ['movies', 'lang'],
+    props: ['movies', 'lang', 'invalidApiString'],
 }
 </script>
 

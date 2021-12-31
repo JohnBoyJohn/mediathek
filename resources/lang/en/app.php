@@ -8,34 +8,44 @@ return [
     'pageTitle' => 'Movie Tracker',
     'footerTitle' => 'Footer',
     'Dashboard' => 'Dashboard',
-    'requiredField' => '* = Pflichtfeld',
+    'requiredField' => '* required',
     'year' => 'Jahr',
-    'selectDefault' => 'bitte auswählen',
+    'selectDefault' => 'select',
+
+    // Sidebar
+    'sidebar' => [
+        'dashboard' => 'Movie Dashboard',
+        'search' => 'Movie Search'
+    ],
 
     // Search Page
     'search' => [
-        'title' => 'Suche',
-        'submit' => 'suchen',
-        'movieTitle' => 'Filmtitel',
+        'title' => 'Search',
+        'resultTitle' => 'Search Result',
+        'submit' => 'search',
+        'movieTitle' => 'Movie Title',
         'type' => [
-            'label' => 'Typ',
-            'movie' => 'Film',
-            'series' => 'Serie',
+            'label' => 'Type',
+            'movie' => 'Movie',
+            'series' => 'Series',
             'episode' => 'Episode',
         ],
-        'watched' => 'gesehen'
+        'watched' => 'watched',
+
+        'released' => 'Release Date',
+        'runtime' => 'Runtime',
+        'plot' => 'Plot',
     ],
 
     // List Page
     'list' => [
-        'title' => 'Liste der gesehenen Filme',
+        'title' => 'List of watched movies',
         'table' => [
             'header' => [
                 'title' => 'Title',
                 'genre' => 'Genre',
                 'released' => 'Released',
                 'runtime' => 'Runtime',
-                'extra' => 'Extra',
             ],
         ],
     ],
@@ -48,9 +58,9 @@ return [
     // AJAX Messages
     'messages' => [
         'movie' => [
-            'success' => 'Der Film wurde hinzugefügt.',
-            'alreadyThere' => 'Der Film wurde bereits hinzugefüt.',
+            'success' => 'The movie was successfully added',
+            'alreadyThere' => 'The movie was added before.',
         ],
-        'error' => 'Ein Fehler ist aufgetreten. Bitte probieren Sie es später erneut.',
+        'error' => 'An error occours. Please try again later.',
     ],
 ];

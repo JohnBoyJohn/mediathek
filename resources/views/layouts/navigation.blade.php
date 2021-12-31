@@ -16,7 +16,7 @@
                 </button>
 
                 <ul class="dropdown-menu end-0 start-50" aria-labelledby="customerMenuButton">
-                    <div class="p-2 border-bottom">{{ Auth::user()->name }}</div>
+                    <div class="px-3 pb-2 border-bottom">{{ Auth::user()->name }}</div>
 
                     <!-- Authentication -->
                     <form method="POST" action="{{ route('logout') }}">

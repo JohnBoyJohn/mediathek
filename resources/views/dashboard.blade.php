@@ -12,7 +12,8 @@
                     <!-- CONTENT -->
                     <app 
                         :movies="{{ json_encode($movies) }}"
-                        :lang="{{ json_encode(__('app')) }}" 
+                        :lang="{{ json_encode(__('app')) }}"
+                        :invalid-api-string="{{ json_encode(config('app.invalidApiString')) }}"
                     />
                 </div>
             </div>

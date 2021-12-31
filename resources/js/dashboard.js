@@ -3,7 +3,7 @@ import store from './vue/store/store';
 
 window.Vue = require('vue');
 
-Vue.component('App', require('./vue/listApp.vue').default);
+Vue.component('App', require('./vue/ListApp.vue').default);
 
 const app = new Vue({
     el: '#app',

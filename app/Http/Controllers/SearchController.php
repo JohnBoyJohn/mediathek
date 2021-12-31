@@ -4,7 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use App\Models\Movie;
+use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Http;
 use Illuminate\Support\Facades\Log;
 
@@ -22,17 +24,30 @@ class SearchController extends Controller
         ]);
 
         if ($validated) {
+            try {
+                //code...
+            } catch (\Throwable $th) {
+                //throw $th;
+            }
             $query = $this->assembleQueryString($request);
             $response = Http::get($query);
+            $saved = null;
+
+            if($response['imdbID']) {
+                $user = User::find(Auth::id());
+                $saved = $user->movies()
+                        ->where('imdbID', $response['imdbID'])
+                        ->first();
+            }
 
             if ($response->successful()) {
+                return response()->json([
+                    'data' => $response->json(),
+                    'saved' => $saved ? true : false,
+                ]);
                 return $response->json();
             } else {
-                Log::error('***************** error-start *****************');
-                Log::error($query);
-                Log::error($request->all());
-                Log::error($response);
-                Log::error('****************** error-end ******************');
+                $this->log($request, $query, $response);
             }
         }
     }
@@ -52,5 +67,13 @@ class SearchController extends Controller
         }
 
         return $search;
+    }
+
+    private function log(Request $request, string $query, Response $response) {
+        Log::error('***************** error-start *****************');
+        Log::error($query);
+        Log::error($request->all());
+        Log::error($response);
+        Log::error('****************** error-end ******************');
     }
 }

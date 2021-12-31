@@ -6,11 +6,20 @@ Vue.use(Vuex);
 const store = new Vuex.Store({
     state: {
         searchResult: {},
+        alreadySaved: false,
+        showAjaxSpinner: false,
     },
     mutations: {
         setSearchResult (state, payload) {
-            state.searchResult = payload;
-        }
+            state.searchResult = payload.data;
+            state.alreadySaved = payload.saved;
+        },
+        setShowAjaxSpinner (state, payload) {
+            state.showAjaxSpinner = payload;
+        },
+        setAlreadySaved(state) {
+            state.alreadySaved = true;
+        },
     },
 });
 

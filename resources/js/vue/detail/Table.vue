@@ -8,7 +8,7 @@
                 <div class="header row border-bottom">
                     <div class="col-4 pb-2">{{ movie.title }}</div>
                     <div class="col-4 pb-2">{{ movie.genre }}</div>
-                    <div class="col-2 pb-2">{{ movie.released }}</div>
+                    <div class="col-2 pb-2">{{ releaseDate }}</div>
                     <div class="col-2 pb-2">{{ movie.runtime }}</div>
                 </div>
 
@@ -23,7 +23,7 @@
                 v-for="(value, index) in getBodyIndexes"
                 :key="index"
             >
-                <span v-if="value != 'N/A' && value != null">
+                <span>
                     {{ index }}: {{ value }}
                 </span>
             </div>
@@ -41,7 +41,7 @@ export default {
             hiddenIndexes: ['id', 'imdbID', 'created_at', 'updated_at']
         };
     },
-    props: ['lang', 'movie'],
+    props: ['lang', 'movie', 'invalidApiString'],
     computed: {
         getHeaderIndexes () {
             const indexes = Object.entries(this.movie);
@@ -60,6 +60,18 @@ export default {
             }, this);
 
             return Object.fromEntries(filtered);
+        },
+        releaseDate () {
+            let releaseDate = this.movie.released;
+
+            if (releaseDate != this.invalidApiString) {
+                const date = releaseDate.split('-');
+                releaseDate = date[2] + '.' + date[1] + '.' + date[0];
+            } else {
+                releaseDate = this.lang.search.released + ': ' + this.invalidApiString;
+            }
+            
+            return releaseDate;
         },
     },
 }

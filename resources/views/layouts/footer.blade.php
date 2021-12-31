@@ -1,4 +1,4 @@
-<nav class="navbar fixed-bottom navbar-expand-lg navbar-light bg-light border-top mt-4">
+<nav class="navbar navbar-expand-lg navbar-light bg-light border-top mt-4">
     <div class="container w-100 d-inline">
         <div class="row">
             <div class="col-12">

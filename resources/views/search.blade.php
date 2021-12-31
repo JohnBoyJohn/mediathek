@@ -10,7 +10,10 @@
 
                 <div class="col-9 border bg-light">
                     <!-- CONTENT -->
-                    <app :lang="{{ json_encode(__('app')) }}" />
+                    <app 
+                        :lang="{{ json_encode(__('app')) }}" 
+                        :invalid-api-string="{{ json_encode(config('app.invalidApiString')) }}"
+                    />
                 </div>
             </div>
         </div>

@@ -3,7 +3,7 @@ import store from './vue/store/store';
 
 window.Vue = require('vue');
 
-Vue.component('App', require('./vue/finderApp.vue').default);
+Vue.component('App', require('./vue/FinderApp.vue').default);
 
 const app = new Vue({
     el: '#app',

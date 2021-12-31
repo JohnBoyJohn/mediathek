@@ -3,16 +3,20 @@
         <h2 class="mt-3 mb-4">
             {{ lang.list.title }}
         </h2>
-        <list-form :movies="movies" :lang="lang" />
+        <list-form 
+            :movies="movies"
+            :lang="lang"
+            :invalid-api-string="invalidApiString"
+        />
     </div>
 </template>
 
 <script>
-import ListForm from './list/form.vue';
+import ListForm from './list/Form.vue';
 
 export default {
     name: "List-App",
-    props: ['lang', 'movies'],
+    props: ['lang', 'movies', 'invalidApiString'],
     components: {
         ListForm,
     }

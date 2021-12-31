@@ -1,2 +1,15 @@
 @import '~bootstrap/scss/bootstrap';
 @import '~bootstrap-icons/font/bootstrap-icons';
+
+#main-content {
+    min-height: calc(100vh - 193px);
+}
+
+.sidebar {
+    .bi-search {
+        font-size: 24px;
+    }
+    .nav-item:hover {
+        background-color: #eee;
+    }
+}

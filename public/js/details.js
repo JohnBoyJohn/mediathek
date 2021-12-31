@@ -103,7 +103,7 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
       hiddenIndexes: ['id', 'imdbID', 'created_at', 'updated_at']
     };
   },
-  props: ['lang', 'movie'],
+  props: ['lang', 'movie', 'invalidApiString'],
   computed: {
     getHeaderIndexes: function getHeaderIndexes() {
       var _this = this;
@@ -130,6 +130,18 @@ function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
         return !_this2.headerIndexes.includes(key) && !_this2.specialIndexes.includes(key) && !_this2.hiddenIndexes.includes(key);
       }, this);
       return Object.fromEntries(filtered);
+    },
+    releaseDate: function releaseDate() {
+      var releaseDate = this.movie.released;
+
+      if (releaseDate != this.invalidApiString) {
+        var date = releaseDate.split('-');
+        releaseDate = date[2] + '.' + date[1] + '.' + date[0];
+      } else {
+        releaseDate = this.lang.search.released + ': ' + this.invalidApiString;
+      }
+
+      return releaseDate;
     }
   }
 });
@@ -296,7 +308,7 @@ var render = function () {
       _c("h2", { staticClass: "mt-3 mb-4" }, [
         _vm._v("\n        " + _vm._s(_vm.lang.details.title) + "\n\n        "),
         _c("span", { staticClass: "float-end" }, [
-          _c("i", { staticClass: "fs-4 bi-house" }),
+          _c("i", { staticClass: "fs-4 bi-eye" }),
           _vm._v("\n            " + _vm._s(_vm.watched) + "\n        "),
         ]),
         _vm._v(" "),
@@ -350,7 +362,7 @@ var render = function () {
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-2 pb-2" }, [
-            _vm._v(_vm._s(_vm.movie.released)),
+            _vm._v(_vm._s(_vm.releaseDate)),
           ]),
           _vm._v(" "),
           _c("div", { staticClass: "col-2 pb-2" }, [
@@ -371,17 +383,15 @@ var render = function () {
       { staticClass: "row content border-top pt-2" },
       _vm._l(_vm.getBodyIndexes, function (value, index) {
         return _c("div", { key: index, staticClass: "col-6 mb-2" }, [
-          value != "N/A" && value != null
-            ? _c("span", [
-                _vm._v(
-                  "\n                " +
-                    _vm._s(index) +
-                    ": " +
-                    _vm._s(value) +
-                    "\n            "
-                ),
-              ])
-            : _vm._e(),
+          _c("span", [
+            _vm._v(
+              "\n                " +
+                _vm._s(index) +
+                ": " +
+                _vm._s(value) +
+                "\n            "
+            ),
+          ]),
         ])
       }),
       0

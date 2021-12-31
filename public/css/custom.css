@@ -17439,3 +17439,14 @@ textarea.form-control-lg {
 .bi-terminal-x::before {
   content: "\f6ff";
 }
+
+#main-content {
+  min-height: calc(100vh - 193px);
+}
+
+.sidebar .bi-search {
+  font-size: 24px;
+}
+.sidebar .nav-item:hover {
+  background-color: #eee;
+}

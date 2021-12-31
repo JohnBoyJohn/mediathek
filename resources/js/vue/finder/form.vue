@@ -52,6 +52,12 @@
                     </button>
                 </div>
             </div>
+
+            <div class="row mb-3" v-show="error">
+                <div class="col-12">
+                    {{ lang.messages.error }}
+                </div>
+            </div>
         </form>
     </div>
 </template>
@@ -64,6 +70,7 @@ export default {
             title: '',
             year: '',
             type: '',
+            error: null,
         };
     },
     props: ['lang'],
@@ -83,6 +90,7 @@ export default {
     methods: {
         send: function (event) {
             event.preventDefault();
+            this.$store.commit('setShowAjaxSpinner', true);
             let data = {
                 title: this.title,
                 year: this.year,
@@ -92,9 +100,13 @@ export default {
             axios.post('/search', data)
                 .then(response => {
                     this.$store.commit('setSearchResult', response.data);
+                    this.error = null;
                 })
                 .catch(error => {
-                    console.log(error);
+                    this.error = error;
+                })
+                .finally(() => {
+                    this.$store.commit('setShowAjaxSpinner', false);
                 });
         }
     }

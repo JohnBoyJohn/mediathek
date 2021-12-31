@@ -11,6 +11,8 @@ export default class SearchResult {
     }
 
     assembleProperties() {
+
+        console.log(this.rawData);
         this.title = this.rawData.hasOwnProperty('Title') ? this.rawData.Title : '';
         this.released = this.rawData.hasOwnProperty('Released') ? this.rawData.Released : '';
         this.runtime = this.rawData.hasOwnProperty('Runtime') ? this.rawData.Runtime : '';
