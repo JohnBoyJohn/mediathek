@@ -11,8 +11,10 @@
 - clone repo locally
 - run command `composer install`
 - run command `npm install`
+- run command `php artisan key:generate`
+- clone file `.env.example` to `.env` and add a `movie API Key` at the bottom
 - run command `php artisan serve`
-- open browser at mentioned url by last command
+- open browser at mentioned url by last command output
 
 ## About Laravel
 
